@@ -1,5 +1,6 @@
-const API_URL = "https://pokeapi.co/api/v2"
+const pokeApiUrl = "https://pokeapi.co/api/v2"
 const apiUrl = process.env.BACKEND_URL + "/api"
+
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -82,18 +83,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getPokemonsList: async (startId, endId) => {
+			getPokemonsList: async () => {
 				try {
-					const promises  = [];
-					for (let id = startId; id <= endId; id++) {
-						promises.push(fetch(`${API_URL}/pokemon/${id}`).then(response => response.json())); 
-						
-					}
-					const pokemonsData = await Promise.all(promises);
-					setStore ({ pokemons: pokemonsData});
+					const response = await fetch(`${pokeApiUrl}/pokemon`, {
+						//body: JSON.stringify({ fields: ['name', 'stats', 'ability', 'characteristic', 'evolution'] }),
+						headers: {
+							'Content-type': 'application/json; charset=UTF-8',
+						}
+					});
 
-				} catch (error) {
-					console.log("Error loading message from backend", error);
+					const res = await response.json();
+					console.log(res)
+					const store = getStore()
+					setStore({ ...store, pokemons: res.pokemons })
+				} catch (e) {
+					console.error(e);
 				}
 			},
 
@@ -101,12 +105,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	try {
 			// 		const options = {
 			// 			method: 'GET',
+						// body: JSON.stringify({ fields: ['name', 'stats', 'ability', 'characteristic', 'evolution'] }),
 			// 			headers: {
 			// 				accept: 'application/json',
 			// 			}
 			// 		};
 
-			// 		const response = await fetch(`${API_URL}`);
+			// 		const response = await fetch(`${pokeApiUrl}`);
 			// 		const data = await response.json();
 
 			// 		if (response.ok) {
@@ -124,54 +129,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			
 
-			// isAuth: async () => {
-			// 	try {
-			// 		const options = {
-			// 			method: 'GET',
-			// 			headers: {
-			// 				Authorization: 'Bearer ' + localStorage.getItem("token")
-			// 			}
-			// 		};
-			// 		const response = await fetch(`${apiUrl}/isAuth`, options)
-			// 		console.log(response)
-			// 		const res = await response.json()
-			// 		console.log(res)
-			// 		if (response.ok) {
-			// 			setStore({ currentUser: res })
-			// 			return null
-			// 		}
-			// 		setStore({ currentUser: false })
-			// 	} catch (error) {
-			// 		console.log("Error loading message from backend", error);
-			// 		setStore({ currentUser: false })
-			// 	}
-			// },
+			isAuth: async () => {
+				try {
+					const options = {
+						method: 'GET',
+						headers: {
+							Authorization: 'Bearer ' + localStorage.getItem("token")
+						}
+					};
+					const response = await fetch(`${apiUrl}/isAuth`, options)
+					console.log(response)
+					const res = await response.json()
+					console.log(res)
+					if (response.ok) {
+						setStore({ currentUser: res })
+						return null
+					}
+					setStore({ currentUser: false })
+				} catch (error) {
+					console.log("Error loading message from backend", error);
+					setStore({ currentUser: false })
+				}
+			},
 
-			// editUser: async (formData) => {
-			// 	try {
-			// 		const actions = getActions()
-			// 		const response = await fetch(apiUrl + "/user", {
-			// 			method: 'PUT',
-			// 			headers: {
-			// 				'Content-Type': 'application/json',
-			// 				Authorization: 'Bearer ' + localStorage.getItem("token")
-			// 			},
-			// 			body: JSON.stringify(formData)
-			// 		});
-			// 		console.log(formData)
-			// 		if (response.ok) {
-			// 			const res = await response.json();
-			// 			actions.isAuth()
-			// 			console.log(res)
-			// 			return res
-			// 		} else {
+			editUser: async (formData) => {
+				try {
+					const actions = getActions()
+					const response = await fetch(apiUrl + "/user", {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: 'Bearer ' + localStorage.getItem("token")
+						},
+						body: JSON.stringify(formData)
+					});
+					console.log(formData)
+					if (response.ok) {
+						const res = await response.json();
+						actions.isAuth()
+						console.log(res)
+						return res
+					} else {
 
-			// 			console.error('Error editing user:', response.statusText);
-			// 		}
-			// 	} catch (error) {
-			// 		console.error('Error editing user:', error);
-			// 	}
-			// },
+						console.error('Error editing user:', response.statusText);
+					}
+				} catch (error) {
+					console.error('Error editing user:', error);
+				}
+			},
 
 			
 

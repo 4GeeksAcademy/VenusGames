@@ -95,29 +95,22 @@ const LogIn = () => {
 
                         <p>Register now and become a part of our growing comunity!"</p>
 
-                        <Link to={"/signup"}>
-
+                        <Link to={"/SignUp"}>
                             <button className="info-buton sig-but">Sign Up</button>
-
                         </Link>
-
                     </div>
-
                 </div>
 
+                <br/>
                 <div className='form-information log-cont'>
-
                     <div className='forminformation-childs '>
-
                         <h2>Log In</h2>
-
                         <form className='form'>
-
                             <label htmlFor='email'>
                                 <i className="fa-solid fa-envelope"></i>
                                 <input type='email' id='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                             </label>
-
+                            <br/><br/>
                             <label htmlFor='password'>
                                 <i className="fa-solid fa-lock"></i>
                                 <input type='password' id='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />

@@ -15,7 +15,7 @@ const ListUsers = () => {
         <>
             <h2 className="title">User List</h2>
             <div className='container mb-5'>
-                <ul class="list-group d-flex">
+                <ul className="list-group d-flex">
                     {store.users.map((user, index) => (
                         <li key={index} className="list-group-item">
                             {user.full_name} - {user.email}
