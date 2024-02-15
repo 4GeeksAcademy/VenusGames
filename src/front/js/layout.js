@@ -4,12 +4,21 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
+import PokemonView from "./component/PokemonView.jsx";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import Footer from "./component/footer";
+import Signup from "./component/SignUp.jsx";
+import LogIn from "./component/logIn.jsx";
+import TechnicalSupport from "./pages/technicalSupport.js"
+import Aboutus from "./pages/aboutUs.js";
+import FrequentQuestions from "./pages/frequentQuestions.js";
+import { HeaderMenu } from "./component/headerMenu.js";
+import PokemonDetails from "./component/pokemonDetails.js";
+
 
 //create your first component
 const Layout = () => {
@@ -17,7 +26,7 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
@@ -25,9 +34,17 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
+                        <Route element={<LogIn />} path="/logIn" />
+                        <Route element={<Signup />} path="/Signun" />
+                        <Route element={<PokemonView />} path="/pokemonView" />
+                        <Route element={<PokemonDetails/>} path="/pokemonDetails"/>
+                        <Route element={<HeaderMenu />} path="/Headermenu" />
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<TechnicalSupport />} path="/TechnicalSupport" />
+                        <Route element={<Aboutus />} path="/aboutus" />
+                        <Route element={<FrequentQuestions />} path="/frequentQuestions" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

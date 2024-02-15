@@ -1,10 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../../styles/footer.css";
 
-export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-	</footer>
-);
+const Footer = () => {
+
+    const navigate = useNavigate()
+
+    return (
+
+        <div>
+
+            <div className="foot">
+
+                <div className="foot-info">
+
+					<p className="mx-1 p-f button-r" role="button" onClick={() => navigate("/aboutus")}>About us</p>
+                    <p className="mx-1 p-f button-r" role="button" onClick={() => navigate("/frequentquestions")}>Frequent Questions</p>
+					<p className="mx-1 p-f button-r" role="button" onClick={() => navigate("/technicalsupport")}>Technical Support</p>
+                    
+
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+export default Footer
