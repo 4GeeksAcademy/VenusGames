@@ -1,10 +1,11 @@
-const pokeApiUrl = "https://pokeapi.co/api/v2"
+//const pokeApiUrl = "https://pokeapi.co/api/v2"
 const apiUrl = process.env.BACKEND_URL + "/api"
 
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			pokeApiUrl: "https://pokeapi.co/api/v2",
 			message: null,
 			currentUser: null,
 			favorites: [],
@@ -83,25 +84,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getPokemonsList: async () => {
+			getPokemonsList: async (url) => {
 				try {
-					const response = await fetch(`${pokeApiUrl}/pokemon`, {
-						//body: JSON.stringify({ fields: ['name', 'stats', 'ability', 'characteristic', 'evolution'] }),
+					const response = await fetch(url, {
 						headers: {
 							'Content-type': 'application/json; charset=UTF-8',
 						}
 					});
 
-					const res = await response.json();
-					console.log(res)
-					const store = getStore()
-					setStore({ ...store, pokemons: res.pokemons })
-				} catch (e) {
-					console.error(e);
+					if (!response.ok) {
+						throw new Error('Failed to fetch Pokemon data');
+					}
+			
+					// Actualizar el estado de la tienda con el objeto data modificado
+					const data = await response.json();
+					const store = getStore();
+					setStore({ ...store, pokemons: data });
+					console.log(data);
+				} catch (error) {
+					console.error('Error fetching Pokemon data:', error);
 				}
 			},
 
-			// fetchPokemonByName: async (pokemonName) => { //la cosa es que poniendo el nombre en postman no sale nada
+			getPokemonDetails: async (identifier) => {
+				try {
+					const response = await fetch(`${getStore().pokeApiUrl}/pokemon/${identifier}`);
+					if (!response.ok) {
+						throw new Error('Failed to fetch Pokemon details');
+					}
+					const data = await response.json();
+					const store = getStore();
+					setStore({ ...store, pokemon: data });
+				} catch (error) {
+					console.error('Error fetching Pokemon details:', error);
+				}
+			},
+					
+
+
+
+			// 		const data = await response.json(); // Ahora data contiene una lista de Pokémon, pero puedo necesitar hacer más solicitudes para obtener detalles adicionales.
+			// 		const store = getStore();
+			// 		setStore({ ...store, pokemons: data });
+			// 		console.log(data)
+
+			// 	} catch (error) {
+			// 		console.error('Error fetching Pokemon data:', error);
+			// 	}
+			// },
+
+			// getPokemonDetails: async () => { //la cosa es que poniendo el nombre en postman no sale nada
 			// 	try {
 			// 		const options = {
 			// 			method: 'GET',

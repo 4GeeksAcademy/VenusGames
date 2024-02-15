@@ -1,0 +1,19 @@
+.headerMenu {
+    display: flex;
+    justify-content: center;
+}
+
+.region {
+    display: flex;
+    list-style-type: none; /* Elimina los puntos de la lista */
+    margin-top: -30px;
+    margin-bottom: 3rem;
+  }
+  
+  .region li {
+    margin-right: 10px; /* Ajusta el margen entre los elementos */
+  }
+  
+  .region li:last-child {
+    margin-right: 0; /* Elimina el margen del último elemento */
+  }

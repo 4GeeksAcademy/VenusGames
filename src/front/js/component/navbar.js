@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import pokeballiconVenus from "../../img/pokeballicon03venus.png";
 import pokeballiconRushing from "../../img/pokeballicon02.png";
+import "../../styles/navbar.css";
 
 export const Navbar = () => {
 	return (

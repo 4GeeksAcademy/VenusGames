@@ -1,0 +1,9 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 200px; /* Ajusta el ancho según tus necesidades */
+    margin: 10px; /* Agrega un margen entre las tarjetas */
+  }
