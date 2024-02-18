@@ -1,5 +1,5 @@
 //const pokeApiUrl = "https://pokeapi.co/api/v2"
-const apiUrl = process.env.BACKEND_URL + "/api"
+const apiUrl = process.env.BACKEND_URL + "api"
 
 
 const getState = ({ getStore, getActions, setStore }) => {
@@ -106,9 +106,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getPokemonDetails: async (identifier) => {
+			getPokemonDetails: async (name) => {
+				if (!name) {
+					console.error('Name is undefined');
+					return;
+				}
 				try {
-					const response = await fetch(`${getStore().pokeApiUrl}/pokemon/${identifier}`);
+					const response = await fetch(`${getStore().pokeApiUrl}/pokemon/${name}`);
 					if (!response.ok) {
 						throw new Error('Failed to fetch Pokemon details');
 					}
@@ -119,19 +123,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error fetching Pokemon details:', error);
 				}
 			},
-					
 
-
-
-			// 		const data = await response.json(); // Ahora data contiene una lista de Pokémon, pero puedo necesitar hacer más solicitudes para obtener detalles adicionales.
-			// 		const store = getStore();
-			// 		setStore({ ...store, pokemons: data });
-			// 		console.log(data)
-
+			// ejemplo: loadOneActor: async (id) => {
+			// 	console.log(id)
+			// 	try {
+			// 		const options = {
+			// 			method: 'GET',
+			// 			headers: {
+			// 				accept: 'application/json',
+			// 				}
+			// 		};
+			// 		fetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`, options)
+			// 			.then(response => response.json())
+			// 			.then(response => setStore({ OneActor: response }))
+			// 			.catch(err => console.error(err));
 			// 	} catch (error) {
-			// 		console.error('Error fetching Pokemon data:', error);
+			// 		console.log("Error loading message from backend", error);
 			// 	}
 			// },
+					
+
 
 			// getPokemonDetails: async () => { //la cosa es que poniendo el nombre en postman no sale nada
 			// 	try {

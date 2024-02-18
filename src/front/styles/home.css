@@ -1,11 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    background-color: bisque;
+    background-color: #302E36;
 }
-
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.nextPrevious-container {
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    margin-bottom: 40px; /* Establece la altura del contenedor al 100% del viewport height */
+    margin-top: 50px;
+  }
+  
+  .nextPrevious {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-style: normal;
+    text-shadow: 2px 1px 1px rgb(200, 200, 200);
+    padding: 6px 30px;
+    font-size: 23px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #2f2d2d;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 7px #999;
+  }
+  
+  .nextPrevious:hover {
+    background-color: rgb(244, 244, 244);
+  }
+  
+  .nextPrevious:active {
+    background-color: #6d6666;
+    box-shadow: 0 5px #0e0e0e;
+    transform: translateY(4px);
+  }

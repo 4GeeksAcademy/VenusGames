@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
-import PokemonView from "./component/PokemonView.jsx";
+import PokemonView from "./pages/PokemonView.jsx";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -16,8 +16,8 @@ import LogIn from "./component/logIn.jsx";
 import TechnicalSupport from "./pages/technicalSupport.js"
 import Aboutus from "./pages/aboutUs.js";
 import FrequentQuestions from "./pages/frequentQuestions.js";
-import { HeaderMenu } from "./component/headerMenu.js";
-import PokemonDetails from "./component/pokemonDetails.js";
+import { HeaderMenu } from "./pages/headerMenu.js";
+import PokemonDetails from "./pages/pokemonDetails.js";
 
 
 //create your first component
@@ -35,11 +35,12 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<LogIn />} path="/logIn" />
-                        <Route element={<Signup />} path="/Signun" />
+                        <Route element={<Signup />} path="/Signup" />
                         <Route element={<PokemonView />} path="/pokemonView" />
-                        <Route element={<PokemonDetails/>} path="/pokemonDetails"/>
+                        <Route element={<PokemonDetails />} path="/pokemonDetails/:index" />
                         <Route element={<HeaderMenu />} path="/Headermenu" />
                         <Route element={<Home />} path="/" />
+                        <Route element={<Footer />} path="/footer" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<TechnicalSupport />} path="/TechnicalSupport" />
@@ -47,7 +48,6 @@ const Layout = () => {
                         <Route element={<FrequentQuestions />} path="/frequentQuestions" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>

@@ -4,9 +4,9 @@ import "../../styles/headerMenu.css";
 
 export const HeaderMenu = () => {
     return (
-		<div className="headerMenu">
+		<div className="headerMenu mt-5">
 				<ul className="region">
-				<li><Link to="/">Kanto</Link></li>
+					<li><Link to="/">Kanto</Link></li>
 					<li><Link to="/">Johto</Link></li>
 					<li><Link to="/">Hoenn</Link></li>
 					<li><Link to="/">Sinnoh</Link></li>

@@ -1,0 +1,56 @@
+.card{
+    width: 230px;
+    margin: 10px 30px 60px 20px; /* Ajuste para agregar espacio dentro del card */
+    box-sizing: border-box; /* Para incluir el padding en el ancho total del card */
+    background-color: #312F37;
+    padding: 20px 10px;
+    cursor: pointer;
+    color: #2f2d2d;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 7px 7px 7px 7px #19181C;
+}
+.card-img-top {
+    width: 100%;
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    margin-top: 25px;
+    font-size: small;font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-style: normal;
+}
+.card-link {
+    margin: 0px;
+    text-decoration: none;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+}
+.div-pic-act{
+    display: flex;
+    justify-content: center;
+    margin: 2% 0% 5% 33%;
+}
+
+/* error */
+@import url('https://fonts.cdnfonts.com/css/hamburgsymbols');
+.personalmsg{
+    font-family: 'HamburgSymbols', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: -90px;
+    margin-bottom: 70px
+}
+
+@import url('https://fonts.cdnfonts.com/css/gnarly-skeleton-black-personal');
+
+.error-msg {
+    font-family: 'Gnarly Skeleton Black PERSONAL', sans-serif;
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+/* error */

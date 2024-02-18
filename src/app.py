@@ -67,6 +67,9 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
+@app.route('/saludar', methods=['GET'])
+def saludar():
+    return jsonify({"msg": "hola, como estas?"}), 200
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
