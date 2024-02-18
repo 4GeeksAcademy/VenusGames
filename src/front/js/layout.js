@@ -37,7 +37,7 @@ const Layout = () => {
                         <Route element={<LogIn />} path="/logIn" />
                         <Route element={<Signup />} path="/Signup" />
                         <Route element={<PokemonView />} path="/pokemonView" />
-                        <Route element={<PokemonDetails />} path="/pokemonDetails/:index" />
+                        <Route element={<PokemonDetails />} path="/pokemon/:name" />
                         <Route element={<HeaderMenu />} path="/Headermenu" />
                         <Route element={<Home />} path="/" />
                         <Route element={<Footer />} path="/footer" />

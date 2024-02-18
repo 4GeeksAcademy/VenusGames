@@ -4,7 +4,7 @@ import "../../styles/headerMenu.css";
 
 export const HeaderMenu = () => {
     return (
-		<div className="headerMenu mt-5">
+		<div className="headerMenu mt-1">
 				<ul className="region">
 					<li><Link to="/">Kanto</Link></li>
 					<li><Link to="/">Johto</Link></li>
@@ -16,6 +16,8 @@ export const HeaderMenu = () => {
 					<li><Link to="/">Galar</Link></li>
 					<li><Link to="/">Palea</Link></li>
 				</ul>
+				<hr></hr>
 		</div>
+		
 	);
 }
