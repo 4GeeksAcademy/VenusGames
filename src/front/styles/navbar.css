@@ -7,25 +7,26 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap'); */
 
 nav{
-    background-color: #0e0d0d;
+    background-color: #6cba9a;
     display: flex;
     justify-content: space-between;
     text-decoration: none; 
     /* huh? */
 }
 .web-name{
-    padding-right: 100px;
+    text-decoration: none;
 }
 a{
     display: flex;
     align-items: center;
+    padding-right: 5px;
 }
 .header__logo {
+    margin-top: -5px;
     padding-right: 10px;
-    margin-bottom: -3px;
+    margin-bottom: -0px;
 }
 #Poketitle {
-    padding-right: 50px;
     font-family: 'Rocher', cursive;
     font-size: large;
     font-weight: 900;
@@ -37,7 +38,7 @@ a{
     text-shadow: 1px 1px 0px #2c2317, 
         2px 2px 0px #FFD662, 
         3px 3px 0px  #FF80BF, 
-        4px 3px 0px #db80a9, 
+        4px 3px 0px #db8180, 
         5px 3px 0px #6868AC, 
         6px 3px 0px #e7edf7;
 }
@@ -86,4 +87,8 @@ a{
 .secondButton {
     text-decoration: none;
     margin-right: 0;
+  }
+  .dos{
+    margin: 0;
+    padding: 0;
   }

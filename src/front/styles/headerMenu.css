@@ -1,20 +1,26 @@
 .headerMenu {
-    display: flex;
-    justify-content: center;
-    background-color: black;
+  text-align: center; /* Centra el contenido horizontalmente */
+  height: 60px;
+  align-items: center; /* Centra verticalmente los elementos */
 }
 
 .region {
-    display: flex;
-    list-style-type: none; /* Elimina los puntos de la lista */
-    margin-top: -30px;
-    margin-bottom: 3rem;
-  }
-  
-  .region li {
-    margin-right: 10px; /* Ajusta el margen entre los elementos */
-  }
-  
-  .region li:last-child {
-    margin-right: 0; /* Elimina el margen del último elemento */
-  }
+  list-style-type: none;
+  padding: 0; /* Elimina el padding */
+  margin: 0; /* Elimina el margen */
+}
+
+.region li {
+  text-decoration: none;
+  display: inline-block; /* Hace que los elementos li se comporten como elementos en línea */
+  margin-right: 30px;
+  margin-top: 10px; /* Ajusta el margen entre los elementos */
+}
+
+.region li:last-child {
+  margin-right: 0; /* Elimina el margen del último elemento */
+}
+.region li a {
+  text-decoration: none;
+  color: inherit; /* Esto asegura que el color del texto sea el mismo que el color por defecto del enlace */
+}

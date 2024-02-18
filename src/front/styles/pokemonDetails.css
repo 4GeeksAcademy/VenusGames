@@ -10,8 +10,20 @@
     border-radius: 10px;
     box-shadow: 7px 7px 7px 7px #19181C;
 }
+.detailsCardTitle{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px 0px 0px;
+}
+.detailsCardImg{
+    display: flex;
+    justify-content: flex-end;
+    margin: 90px 100px 0px 0px;
+    align-items: center;
+}
 .card-img-top {
-    width: 100%;
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    max-width: 500px; /* Limita el tamaño máximo de la imagen */
 }
 
 .card-title {

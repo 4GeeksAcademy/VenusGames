@@ -7,7 +7,7 @@ const PokemonView = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getPokemonsList(50); //no esta funcionando el 50
+    actions.getPokemonsList('https://pokeapi.co/api/v2/ability/?limit=50&offset=50'); //no esta funcionando el 50
   }, []);
 
   return (
@@ -15,12 +15,16 @@ const PokemonView = () => {
       <div className="card-container">
         {store.pokemons.results &&
           store.pokemons.results.length > 0 &&
-          store.pokemons.results.map((pokemon, index) => (
-            <Link key={index} to={`/pokemonDetails/${index + 1}`} className="card-link">
+          store.pokemons.results.map((pokemon, index) => {
+            let arr = pokemon.url.split('/')
+            let id = arr[arr.length -2]
+            return (
+
+            <Link key={index} to={`/pokemon/${pokemon.name}`} className="card-link">
               <div className="card">
                 <img
                   className="card-img-top"
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
                   alt={pokemon.name}
                 />
                 <div className="card-body">
@@ -31,7 +35,7 @@ const PokemonView = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          )})}
       </div>
     </div>
   );

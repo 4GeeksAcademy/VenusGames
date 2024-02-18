@@ -6,11 +6,14 @@
     border: solid 10px red;
     border-radius: 25px;
 }
+
 .footer-info{
     display: flex;
     justify-content: space-around;
     padding: 5px;
     margin-top: 23px;
+}
+.footer-letters{
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-size: larger;
