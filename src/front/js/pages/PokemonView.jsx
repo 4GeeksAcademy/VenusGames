@@ -7,17 +7,16 @@ const PokemonView = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getPokemonsList(50);
+    actions.getPokemonsList(50); //no esta funcionando el 50
   }, []);
 
   return (
     <div>
-      <h2>Lista de Pokemons</h2>
       <div className="card-container">
         {store.pokemons.results &&
           store.pokemons.results.length > 0 &&
           store.pokemons.results.map((pokemon, index) => (
-            <Link key={index} to={`/pokemon/${index + 1}`} className="card-link">
+            <Link key={index} to={`/pokemonDetails/${index + 1}`} className="card-link">
               <div className="card">
                 <img
                   className="card-img-top"
@@ -25,7 +24,10 @@ const PokemonView = () => {
                   alt={pokemon.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{pokemon.name}</h5>
+                  <h5 className="number">{pokemon.id}</h5>
+                  <h4 className="card-title">{pokemon.name}</h4>
+                  <h5 className="card-type">{pokemon.type}</h5> 
+                  {/* no funciona el id y type por alguna razon */}
                 </div>
               </div>
             </Link>

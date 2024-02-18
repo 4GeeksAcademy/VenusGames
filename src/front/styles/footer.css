@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.foot{
+    background-color: #75baad;
+    color: aliceblue;
+    border: solid 10px red;
+    border-radius: 25px;
+}
+.footer-info{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    margin-top: 23px;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-size: larger;
+    font-style: normal;
+    text-shadow: 2px 2px 2px rgb(119, 119, 119);
+}

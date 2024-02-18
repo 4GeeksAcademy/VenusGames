@@ -81,7 +81,7 @@ const LogIn = () => {
 
     return (
 
-        <>
+        <div className="big-box">
 
             <div className='container-form'>
 
@@ -127,7 +127,7 @@ const LogIn = () => {
                 </div>
 
             </div>
-        </>
+        </div>
     );
 };
 

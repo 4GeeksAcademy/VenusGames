@@ -9,6 +9,7 @@ const Signup = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const validatePassword = (password) => {
@@ -66,7 +67,7 @@ const Signup = () => {
   }
 
   return (
-    <>
+    <div className="big-box">
       <div className="container-form">
         <div className="information">
           <div className="info-childs">
@@ -117,7 +118,7 @@ const Signup = () => {
                 />
               </label>
 
-              {error && <p className="error-message">{error}</p>}
+              {/* {error && <p className="error-message">{error}</p>} */}
 
               <button
                 className="info-buton sig-but"
@@ -130,7 +131,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

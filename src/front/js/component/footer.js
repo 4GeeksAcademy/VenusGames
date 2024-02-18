@@ -5,6 +5,7 @@ import "../../styles/footer.css";
 const Footer = () => {
 
     const navigate = useNavigate()
+    
 
     return (
 
@@ -12,7 +13,7 @@ const Footer = () => {
 
             <div className="foot">
 
-                <div className="foot-info">
+                <div className="footer-info">
 
 					<p className="mx-1 p-f button-r" role="button" onClick={() => navigate("/aboutus")}>About us</p>
                     <p className="mx-1 p-f button-r" role="button" onClick={() => navigate("/frequentquestions")}>Frequent Questions</p>

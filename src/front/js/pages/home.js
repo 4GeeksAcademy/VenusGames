@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import PokemonView from "../component/PokemonView.jsx";
-import { HeaderMenu } from "../component/headerMenu.js";
+import PokemonView from "./PokemonView.jsx";
+import { HeaderMenu } from "./headerMenu.js";
+import Footer from "../component/footer.js";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-	const [next, setNext] = useState(store.pokeApiUrl+"/pokemon");
+	const [next, setNext] = useState(store.pokeApiUrl + "/pokemon");
 	const [previous, setPrevious] = useState(null);
 
 
@@ -27,20 +28,20 @@ export const Home = () => {
 	};
 
 	return (
-		<div className="text-center mt-5">
-			<div>
-				<HeaderMenu/>
-			</div>
-			<div>
+		<>
+			 {/* <div className="text-center mt-5">
+			<div> */}
+				<HeaderMenu />
+			 {/* </div>
+			 <div> */}
 				<PokemonView />
+			 {/* </div> */}
+			<div className="nextPrevious-container">
+				<button className="nextPrevious" onClick={handleNextClick}> Next <i className="fa-solid fa-sort-down"></i></button>
+				{previous && <button className="nextPrevious" onClick={handlePreviousClick} style={{marginLeft: "15px"}}> Previous <i className="fa-solid fa-sort-down fa-bounce"></i></button>}
 			</div>
-
-
-			<button className="btn btn-primary" onClick={handleNextClick}> Next </button>
-			{previous && <button className="btn btn-primary" onClick={handlePreviousClick}> Previous </button>}
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-		</div>
+		 {/* </div> */}
+		 <Footer/>
+		</>
 	);
 };
