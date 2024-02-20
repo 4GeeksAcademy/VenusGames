@@ -146,7 +146,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					console.log(`${regionName} Pokedex Data:`, regionPokedexData);
 					
 					// Obtener las entradas de Pokémon de la pokedex de la región
-					const regionPokemonEntries = regionPokedexData.pokemon_entries;
+					const regionPokemonEntries = regionPokedexData.pokemon_species;
 					
 					// Almacena los datos de los Pokémon de la región en el estado global
 					const store = getStore();
@@ -190,6 +190,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					const options = {
 						method: 'GET',
 						headers: {
+							Authorization: 'Bearer ' + localStorage.getItem("token")
 						}
 					};
 					const response = await fetch(`${apiUrl}/isAuth`, options)
@@ -214,6 +215,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 						method: 'PUT',
 						headers: {
 							'Content-Type': 'application/json',
+							Authorization: 'Bearer ' + localStorage.getItem("token")
 						},
 						body: JSON.stringify(formData)
 					});

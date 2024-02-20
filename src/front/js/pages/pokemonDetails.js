@@ -107,10 +107,10 @@ const PokemonDetails = () => {
           {store.pokemon.abilities && (
            <p className="Abilities"><h2 className="Abilities-title">Abilities</h2> {store.pokemon.abilities.map(ability => ability.ability.name).join(', ')}</p>
           )}
-          <p className="baseExperience"><h3>Base Experience: {store.pokemon.base_experience}</h3></p>
-          <p className="height">Height: {store.pokemon.height}</p>
-          <p className="weight">Weight: {store.pokemon.weight}</p>
-          <p>Area encounter: {store.pokemon.location_area_encounters}</p>
+          <p className="baseExperience"><h3 className="baseExperienceFont">Base Experience: {store.pokemon.base_experience}</h3></p>
+          <p className="height"> <h5 className="heightFont">Height: {store.pokemon.height}</h5></p>
+          <p className="weight"><h5 className="weightFont">Weight: {store.pokemon.weight}</h5></p>
+          <p className="encounters"><h5 className="encountersFont">Area encounter: {store.pokemon.location_area_encounters}</h5></p>
           {/* Puedes agregar más detalles según sea necesario */}
         </div>
       )}
