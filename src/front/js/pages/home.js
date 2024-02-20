@@ -12,21 +12,22 @@ export const Home = () => {
 
 
 	useEffect(() => {
-		actions.getPokemonsList(next)
+		actions.getPokemonsList(next);
 	}, [next]);
-
+	
 	useEffect(() => {
-		setPrevious(store.pokemons.previous); // Actualizamos el estado de previous cuando cambia store.pokemons
-	}, [store.pokemons.previous]);
-
+		if (store.pokemons) {
+			setPrevious(store.pokemons.previous);
+		}
+	}, [store.pokemons]);
+	
 	const handleNextClick = () => {
-		setNext(store.pokemons.next); // Actualizamos next con la URL del siguiente conjunto de resultados
+		setNext(store.pokemons.next);
 	};
-
+	
 	const handlePreviousClick = () => {
-		setNext(previous); // Actualizamos next con la URL del conjunto de resultados anterior
+		setNext(previous);
 	};
-
 	return (
 		<>
 			 {/* <div className="text-center mt-5">
