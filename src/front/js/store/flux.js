@@ -2,7 +2,7 @@
 const apiUrl = process.env.BACKEND_URL + "api"
 
 
-const getState = ({ getStore, getActions, setStore }) => {
+export const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			pokeApiUrl: "https://pokeapi.co/api/v2",
@@ -43,13 +43,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						headers: {
 							"Content-Type": "application/json"
 						}
-					})
-
+					});
+			
 					const data = await result.json();
 					console.log("respuesta al intentar iniciar sesión:", data);
-					setStore({ loggedUserId: data.id });
+					
+					if (data.user) {
+						setStore({ loggedUserId: data.user.id });
+					}
+			
 					return data;
-
 				} catch (e) {
 					console.error(e);
 				}
@@ -124,25 +127,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// ejemplo: loadOneActor: async (id) => {
-			// 	console.log(id)
-			// 	try {
-			// 		const options = {
-			// 			method: 'GET',
-			// 			headers: {
-			// 				accept: 'application/json',
-			// 				}
-			// 		};
-			// 		fetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`, options)
-			// 			.then(response => response.json())
-			// 			.then(response => setStore({ OneActor: response }))
-			// 			.catch(err => console.error(err));
-			// 	} catch (error) {
-			// 		console.log("Error loading message from backend", error);
-			// 	}
-			// },
+			getPokemonRegion: async (regionName) => {
+				try {
+					const response = await fetch(`${getStore().pokeApiUrl}/region/${regionName}`);
+					const data = await response.json();
+					console.log('Response from API:', data);
 					
-
+					// Obtener la Pokédex de la región
+					const regionPokedex = data.main_generation;
+					if (!regionPokedex) {
+						throw new Error(`No se encontró la pokedex para la región ${regionName}`);
+					}
+					const regionPokedexUrl = regionPokedex.url;
+					
+					// Realizar una solicitud para obtener los detalles de la pokedex de la región
+					const regionPokedexResponse = await fetch(regionPokedexUrl);
+					const regionPokedexData = await regionPokedexResponse.json();
+					console.log(`${regionName} Pokedex Data:`, regionPokedexData);
+					
+					// Obtener las entradas de Pokémon de la pokedex de la región
+					const regionPokemonEntries = regionPokedexData.pokemon_entries;
+					
+					// Almacena los datos de los Pokémon de la región en el estado global
+					const store = getStore();
+					setStore({ ...store, pokemons: regionPokemonEntries });
+				} catch (error) {
+					console.error(`Error fetching Pokemon region for ${regionName}:`, error);
+				}
+			},
+			
 
 			// getPokemonDetails: async () => { //la cosa es que poniendo el nombre en postman no sale nada
 			// 	try {
@@ -177,7 +190,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const options = {
 						method: 'GET',
 						headers: {
-							Authorization: 'Bearer ' + localStorage.getItem("token")
 						}
 					};
 					const response = await fetch(`${apiUrl}/isAuth`, options)
@@ -198,11 +210,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editUser: async (formData) => {
 				try {
 					const actions = getActions()
-					const response = await fetch(apiUrl + "/user", {
+					const response = await fetch(`${apiUrl}/user`, {
 						method: 'PUT',
 						headers: {
 							'Content-Type': 'application/json',
-							Authorization: 'Bearer ' + localStorage.getItem("token")
 						},
 						body: JSON.stringify(formData)
 					});
@@ -220,81 +231,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error editing user:', error);
 				}
 			},
-
-			
-
-
-			addFavorite: async (item, type) => {
-				try {
-					const actions = getActions();
-
-					const response = await fetch(apiUrl + '/user/favorites', {
-						body: JSON.stringify({
-							pokemons_id: type === "pokemon" ? item.id : null,
-						}),
-						method: "POST",
-						headers: {
-							'Content-type': 'application/json; charset=UTF-8',
-						}
-					});
-
-					if (response.ok) {
-						const data = await response.json();
-						console.log(data);
-						actions.getFavorite();
-						const store = getStore();
-						setStore({ ...store, favorites: [...store.favorites, item] })
-
-					} else {
-						console.error("Failed to add favorite pokemon");
-					}
-
-				} catch (e) {
-					console.error(e);
-				}
-			},
-
-			getFavorite: async () => {
-				try {
-					const response = await fetch(apiUrl + '/user/favorites', {
-						headers: {
-							'Content-type': 'application/json; charset=UTF-8',
-						}
-					});
-
-					const res = await response.json();
-					console.log(res)
-					const store = getStore()
-					setStore({ ...store, favorites: res })
-				} catch (e) {
-					console.error(e);
-				}
-			},
-			updateFavorites: async (itemToRemove) => {
-				try {
-					console.log("Item received to remove:", itemToRemove);
-
-					const response = await fetch(apiUrl + "/user/favorite", {
-						method: "DELETE",
-						body: JSON.stringify(itemToRemove),
-						headers: {
-							'Content-type': 'application/json; charset=UTF-8',
-						}
-					});
-
-					if (!response.ok) {
-						throw new Error("Unable to delete");
-					}
-
-					const store = getStore();
-					const updatedFavorites = store.favorites.filter(favorite => favorite.id !== itemToRemove.id);
-					setStore({ favorites: updatedFavorites });
-				} catch (error) {
-					console.error(error);
-				}
-			},
-
-			
 		}
 
 	};

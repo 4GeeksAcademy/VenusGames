@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import pokeballiconVenus from "../../img/pokeballicon03venus.png";
-import pokeballiconRushing from "../../img/pokeballicon02.png";
 import "../../styles/navbar.css";
-import { HeaderMenu } from "../pages/headerMenu";
+import SearchBar from "../pages/SearchBar.jsx";
 
 export const Navbar = () => {
+	// const { getStore } = useContext(Context);
+
+	const handleSearch = (searchTerm) => {
+		  // Lógica para manejar la búsqueda
+		  console.log("Search term:", searchTerm)
+		  const filteredPokemons = getStore().pokemon.filter((pokemon) =>
+		  pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+		console.log("Filtered Pokemons:", filteredPokemons);
+	};
+
 	return (
 		<nav className="navbar navbar-dark d-flex justify-content-space-between mainHeader">
 				<div className="Firstbutton">
-					<Link to="/login">
-						<button className="button" id="navbarButton"><i className="fa-solid fa-user-astronaut"></i>  LogIn  </button>
+					<Link to="/login" style={{textDecoration: "none"}}>
+						<button className="button" id="navbarButton"><i className="fa-solid fa-user-astronaut loginIcon"></i>  LogIn  </button>
 					</Link>
 				</div>
 				<div className="web-name" >
@@ -23,9 +33,7 @@ export const Navbar = () => {
 				</div>
 				<div className="ml-auto">
 					<div className="secondButton">
-						<Link to="{/logIn}">
-							<button className="btn btn-primary" id="navbarButton">Check the Context in action</button>
-						</Link>
+						<SearchBar onSearch={handleSearch} />
 					</div>
 				</div>
 		</nav>

@@ -10,20 +10,50 @@
     border-radius: 10px;
     box-shadow: 7px 7px 7px 7px #19181C;
 }
+.nameAndType{
+    margin-top: 50px;
+}
 .detailsCardTitle{
     display: flex;
     justify-content: center;
-    margin: 30px 0px 0px 0px;
+    margin: 15px 0px 0px 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .detailsCardImg{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 90px 100px 0px 0px;
     align-items: center;
+}
+.Stats-title{
+    display: flex;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.Stats{
+    margin-inline-start: 200px;
+    font-size: large;
+}
+.Abilities-title{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-inline-start: 1.5cm;
+}
+.Abilities{
+    margin-top: -100px;
+    margin-inline-start: 400px;
+    font-size: large;
 }
 .card-img-top {
     width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
     max-width: 500px; /* Limita el tamaño máximo de la imagen */
+}
+.card-number{
+    display: flex;
+    justify-content: end;
+    font-size: larger;
+    margin-inline-end: 350px;
+    font-family: 'FontAwesome', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
 }
 
 .card-title {
@@ -46,6 +76,210 @@
     justify-content: center;
     margin: 2% 0% 5% 33%;
 }
+.grass-type {
+    background-color: green;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+
+.poison-type {
+    background-color: #7F3ED2;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+
+.fire-type {
+    background-color: #DF4C25;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+
+.water-type {
+    background-color: #1F87BF;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.normal-type{
+    background-color: #CBC7BE;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.fighting-type{
+    background-color: #9A574B;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.flying-type{
+    background-color: aqua;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.ground-type{
+    background-color: burlywood;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.rock-type{
+    background-color: #9CA495;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.bug-type{
+    background-color: rgb(31, 88, 31);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.ghost-type{
+    background-color: purple;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.steel-type{
+    background-color: lightsteelblue;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.electric-type{
+    background-color: yellow;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.psychic-type{
+    background-color: pink;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.ice-type{
+    background-color: #C4EBE6;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.dragon-type{
+    background-color: #5D509F;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.dark-type{
+    background-color: #3F3F3D;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.fairy-type{
+    background-color: #D570BD;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.unknown-type{
+    background-color: black;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+.shadow-type{
+    background-color: #2f2d2d;
+    color: white;
+    text-shadow: 2px 1px lightslategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+
 
 /* error */
 @import url('https://fonts.cdnfonts.com/css/hamburgsymbols');

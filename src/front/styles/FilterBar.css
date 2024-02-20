@@ -1,0 +1,28 @@
+.dropdown-menu{
+    background-color: #b38b6c;
+    width: 20%;
+    inset: 1px auto auto 0px;
+    transform: translate(10px, 40px);
+    padding: 5px;
+}
+.filter__title{
+    display: flex;
+    justify-content: center;
+    color: aliceblue;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 100;
+    margin-top: 20px;
+    font-size: larger;
+    font-style: normal;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    background-color: #302E36;
+    border: none;
+    padding-left: 20px;
+    color: lightgray;
+    font-size: x-large;
+}

@@ -5,6 +5,7 @@ import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
 import PokemonView from "./pages/PokemonView.jsx";
+import PokemonDetails from "./pages/pokemonDetails.js";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -13,11 +14,13 @@ import { Navbar } from "./component/navbar";
 import Footer from "./component/footer";
 import Signup from "./component/SignUp.jsx";
 import LogIn from "./component/logIn.jsx";
+import SearchBar from "./pages/SearchBar.jsx"
 import TechnicalSupport from "./pages/technicalSupport.js"
 import Aboutus from "./pages/aboutUs.js";
 import FrequentQuestions from "./pages/frequentQuestions.js";
 import { HeaderMenu } from "./pages/headerMenu.js";
-import PokemonDetails from "./pages/pokemonDetails.js";
+import FilterBar from "./pages/FilterBar.jsx";
+
 
 
 //create your first component
@@ -36,9 +39,11 @@ const Layout = () => {
                     <Routes>
                         <Route element={<LogIn />} path="/logIn" />
                         <Route element={<Signup />} path="/Signup" />
+                        <Route element={<SearchBar />} path="/SearchBar" />
                         <Route element={<PokemonView />} path="/pokemonView" />
                         <Route element={<PokemonDetails />} path="/pokemon/:name" />
                         <Route element={<HeaderMenu />} path="/Headermenu" />
+                        <Route element={<FilterBar/>} path="/FilterBar" />
                         <Route element={<Home />} path="/" />
                         <Route element={<Footer />} path="/footer" />
                         <Route element={<Demo />} path="/demo" />

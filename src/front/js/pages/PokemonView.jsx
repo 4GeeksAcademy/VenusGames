@@ -1,19 +1,31 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import "../../styles/pokemonView.css";
 
 const PokemonView = () => {
   const { store, actions } = useContext(Context);
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [filteredPokemons, setFilteredPokemons] = useState([]);
 
   useEffect(() => {
-    actions.getPokemonsList('https://pokeapi.co/api/v2/ability/?limit=50&offset=50'); //no esta funcionando el 50
+    actions.getPokemonsList('https://pokeapi.co/api/v2/pokemon/?limit=50'); //no esta funcionando el 50
   }, []);
+
+// Este efecto se ejecutará cada vez que cambie la región seleccionada
+useEffect(() => {
+    // Verificar si hay una región seleccionada antes de cargar los Pokémon de esa región
+    if (store.selectedRegion) {
+        actions.getPokemonRegion(store.selectedRegion);
+    }
+}, [store.selectedRegion]); // Esto se ejecutará cada vez que store.selectedRegion cambie
+
 
   return (
     <div>
+
       <div className="card-container">
-        {store.pokemons.results &&
+        {store.pokemons?.results &&
           store.pokemons.results.length > 0 &&
           store.pokemons.results.map((pokemon, index) => {
             let arr = pokemon.url.split('/')
@@ -28,10 +40,7 @@ const PokemonView = () => {
                   alt={pokemon.name}
                 />
                 <div className="card-body">
-                  <h5 className="number">{pokemon.id}</h5>
                   <h4 className="card-title">{pokemon.name}</h4>
-                  <h5 className="card-type">{pokemon.type}</h5> 
-                  {/* no funciona el id y type por alguna razon */}
                 </div>
               </div>
             </Link>
