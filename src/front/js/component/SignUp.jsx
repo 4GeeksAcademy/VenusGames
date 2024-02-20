@@ -51,6 +51,8 @@ const Signup = () => {
 
       const result = await actions.sign_up(newUser);
 
+      console.log(result);
+      
       if (result.msg) {
         Swal.fire({
           position: "top-end",

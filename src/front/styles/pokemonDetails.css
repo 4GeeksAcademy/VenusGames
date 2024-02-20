@@ -43,9 +43,43 @@
     margin-inline-start: 400px;
     font-size: large;
 }
+.baseExperience{
+    display: flex;
+    margin: 60px 250px 0px 0px;
+    justify-content: end;
+}
+.baseExperienceFont{
+    font-size: 1.3rem;
+}
+.height{
+    display: flex;
+    margin: 60px 250px 0px 0px;
+    justify-content: end;
+}
+.heightFont{
+    font-size: 1.3rem;
+}
+.weight{
+    display: flex;
+    margin: 60px 250px 0px 0px;
+    justify-content: end;
+}
+.weightFont{
+    font-size: 1.3rem;
+}
+.encounters{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+.encountersFont{
+    font-size: small;
+    color: #464444;
+}
 .card-img-top {
     width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
     max-width: 500px; /* Limita el tamaño máximo de la imagen */
+    
 }
 .card-number{
     display: flex;

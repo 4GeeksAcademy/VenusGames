@@ -33,6 +33,7 @@ useEffect(() => {
             return (
 
             <Link key={index} to={`/pokemon/${pokemon.name}`} className="card-link">
+              
               <div className="card">
                 <img
                   className="card-img-top"
