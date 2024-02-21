@@ -28,7 +28,7 @@ const aboutus = () => {
           <div className="detailedAboutInfo">
             <br></br>
             <section className="aboutTopic"><h3 id="about"><a href="#about">#</a>&nbsp; Pokemon Venus</h3>
-                <p className="info">I started this proyect as a first step into the wonderful, fantastic and painful world which is coding. Dont get wrong! Sometimes a bit of pain is required to truly appreacite something. Hopefully you find this proyect as interesting as I did while creating it, and who knows, maybe I'll come back one day to improve it as I originally intended to. The world is full of wonderful surprises.</p>
+                <p className="info">I started this proyect as a first step into the wonderful, fantastic and painful world which is coding. Sometimes a bit of pain is required to truly appreciate something. Hopefully you find this proyect as interesting as I did while creating it, and who knows, maybe I'll come back one day to improve it as I originally intended to. The world is full of wonderful surprises.</p>
                 <p className="info">This is currently first alpha version, so let me know what you think!</p>
                 <p className="info">(づ｡◕‿‿◕｡)づ:･ﾟ✧</p>
                 </section>
@@ -39,7 +39,7 @@ const aboutus = () => {
                     </button>
                   </h2>
                   <div id="flush-collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div className="accordion-body fondo">At Venus Games, our passion is to take you on an unforgettable cinematic journey. We are a passionate team of film lovers who believe that the best stories deserve to be shared. Are you looking for your next favorite movie? You are in the right place!.</div>
+                    <div className="accordion-body fondo">...</div>
                   </div>
                 </div>
 
@@ -50,18 +50,27 @@ const aboutus = () => {
                     </button>
                   </h2>
                   <div id="flush-collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div className="accordion-body fondo">Facilitate free access to exceptional films. We want to make discovering new stories as easy as pressing play. At Venus Games, we believe in the magic of cinema to inspire, entertain and connect people.</div>
+                    <div className="accordion-body fondo">Our website is designed to cater to the needs of players, collectors, and enthusiasts alike, providing a comprehensive platform to explore and understand the vast world of Pokemon.</div>
                   </div>
                 </div>
 
                 <div className="accordion-item">
                   <h2 className="accordion-header">
                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                      <strong>How does it work?</strong>
+                      <strong>What does it offer?</strong>
                     </button>
                   </h2>
                   <div id="flush-collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div className="accordion-body fondo">Our team of experts carefully curates a selection of featured films. Whether you're looking for action, drama, comedy or any particular genre, we have something for every taste. The best part? It's completely free.</div>
+                    <div className="accordion-body fondo"><h1>Key Features:</h1>
+                    <li>Comprehensive Pokemon Database: Access a comprehensive database containing detailed information on every Pokemon, including their stats, abilities, moves, evolutions, and more. Whether you're looking for information on your favorite Pokemon or researching to build your perfect team, our database has everything you need.</li>
+
+<li>Pokemon Game Market Prices: Stay updated on the market prices of Pokemon games, including both older and newer editions. Our platform gathers data from multiple reliable sources to provide you with the most accurate and up-to-date prices available.</li>
+
+<li>Price Comparison: Compare prices of different editions and versions of Pokemon games to make informed decisions about your purchases. Whether you're looking for a classic edition to complete your collection or want to know the best available price for the latest game version, our comparison tool will help you find the best deals.</li>
+
+<li>News and Updates: Stay informed with the latest news and updates from the world of Pokemon. From announcements of new games and special events to tips and tricks to enhance your gaming experience, our website keeps you in the loop on everything you need to know.</li>
+
+<li>Active Community: Join an active community of players and Pokemon fans, where you can share your experiences, exchange tips and strategies, and connect with others who share your passion for these adorable pocket monsters.</li></div>
                   </div>
                 </div>
 
@@ -72,7 +81,7 @@ const aboutus = () => {
                     </button>
                   </h2>
                   <div id="flush-collapsefour" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div className="accordion-body fondo">añadir redes sociales ig</div>
+                    <div className="accordion-body fondo">empty fo time being</div>
                   </div>
                 </div>
 

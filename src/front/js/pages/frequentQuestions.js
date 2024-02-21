@@ -21,7 +21,7 @@ const FrequentQuestions = () => {
               </button>
             </h2>
             <div id="flush-collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body fondo">---------- idk </div>
+              <div className="accordion-body fondo"> empty at the moment </div>
             </div>
           </div>
 
@@ -32,7 +32,7 @@ const FrequentQuestions = () => {
               </button>
             </h2>
             <div id="flush-collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body fondo"> Nothing really. I woke up generous one day and did this out of spite, and as a final proyect of course.</div>
+              <div className="accordion-body fondo"> Nothing really. It's a free plataform available to everyone</div>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ const FrequentQuestions = () => {
               </button>
             </h2>
             <div id="flush-collapsefive" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body fondo">Pokemons.</div>
+              <div className="accordion-body fondo">With Pokemon Venus, you have access to all the information and resources you need to become a Pokémon master. Whether you're seeking information on a specific Pokémon, researching game prices, or looking to connect with fellow fans, we're here to assist you on your journey!</div>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ const FrequentQuestions = () => {
               </button>
             </h2>
             <div id="flush-collapsesix" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div className="accordion-body fondo">It has pokemons.</div>
+              <div className="accordion-body fondo">Of course. It is available to all the ages, races and regions. At the end that's exactly what pokemon is all about! A franchise made to be enjoyed by everyone regardless their ways of life.</div>
             </div>
           </div>
         </div>

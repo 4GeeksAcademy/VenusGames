@@ -75,7 +75,7 @@ const technicalSupport = () => {
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" className="accordion-collapse collapse">
-                  <div className="accordion-body fondo">At Reel Rhapsody, we strive to provide you with a perfect viewing experience. However, we understand that sometimes technical issues may arise. Here are some common solutions to address issues when playing content:
+                  <div className="accordion-body fondo">We strive to provide you with a perfect pokemon viewing experience. However, we understand that sometimes technical issues may arise. Here are some common solutions to address issues when playing content:
 
                     1.<strong>Check your Internet Connection:</strong>
                     Make sure you have a stable internet connection. You are never too sure.
@@ -137,7 +137,7 @@ const technicalSupport = () => {
                   </button>
                 </h2>
                 <div id="flush-collapseTwo5" className="accordion-collapse collapse">
-                  <div className="accordion-body fondo">Begin by creating your Reel Rhapsody account. This will allow you to personalize your movie preferences, save favorites, and enjoy a seamless streaming experience.</div>
+                  <div className="accordion-body fondo">Begin by creating your Pokemon Venus account. This will allow you to become part of our growing community, personalize your community user appareance, get more details in our price matching maket, and my eternal appreciation.</div>
                 </div>
               </div>
               <div className="accordion-item">
@@ -147,7 +147,7 @@ const technicalSupport = () => {
                   </button>
                 </h2>
                 <div id="flush-collapseThrees" className="accordion-collapse collapse">
-                  <div className="accordion-body fondo">Enjoy the magic of cinema without any subscription fees. Reel Rhapsody is committed to providing a free and accessible movie-watching experience for everyone.</div>
+                  <div className="accordion-body fondo">Enjoy the magic without any subscription fees. VenusGames is committed to providing a free and accessible experience for everyone.</div>
                 </div>
               </div>
             </div>
