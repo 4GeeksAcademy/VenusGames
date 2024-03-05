@@ -40,11 +40,10 @@ def create_one_user():
         db.session.add(new_user)
         db.session.commit()
 
-        return jsonify ({"msg": "Usuario creado exitosamente"}), 200
+        return jsonify ({"msg": "Usuario creado exitosamente", "fullName": body.get("fullName")}), 200
 
     except Exception as e:
         current_app.logger.error(f"Error al crear usuario: {str(e)}")
-
         return jsonify({"error": "Ocurrió un error al procesar la solicitud"}), 500
     
 @api.route("/login", methods=['POST'])

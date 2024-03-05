@@ -12,8 +12,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: seagreen;
+    background: lightgoldenrodyellow;
 }
 .container-form {
     background-color: coral;
+    display: flex;
+    padding: 50px;
 }

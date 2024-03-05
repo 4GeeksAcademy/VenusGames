@@ -11,7 +11,7 @@ nav{
     display: flex;
     justify-content: space-between;
     text-decoration: none; 
-    /* huh? */
+    
 }
 .web-name{
     text-decoration: none;
