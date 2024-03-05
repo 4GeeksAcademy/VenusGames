@@ -75,7 +75,7 @@ const Signup = () => {
           <div className="info-childs">
             <h2>Welcome!</h2>
             <p>
-              nothing yet
+              Wanna become part of an awesome community? 
             </p>
             <Link to={"/login"}>
               <button className="info-buton log-but">Log In</button>

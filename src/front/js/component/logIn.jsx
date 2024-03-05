@@ -87,16 +87,16 @@ const LogIn = () => {
 
                 <div className='information sig-cont'>
 
-                    <div className='info-childs'>
+                    <div className='info-childs'style={{marginInlineEnd: "100px"}}>
 
                         <h2>Welcome!</h2>
 
                         <p>Do not you have an account yet?</p>
 
-                        <p>Register now and become a part of our growing comunity!"</p>
+                        <p>Register now and become a part of our growing comunity!</p>
 
                         <Link to={"/SignUp"}>
-                            <button className="info-buton sig-but">Sign Up</button>
+                            <button className="info-buton sig-but" style={{display: "flex", marginInlineStart: "50%", textDecoration: "none"}}>Sign Up</button>
                         </Link>
                     </div>
                 </div>
