@@ -14,8 +14,12 @@ import { Navbar } from "./component/navbar";
 import Footer from "./component/footer";
 import Signup from "./component/SignUp.jsx";
 import LogIn from "./component/logIn.jsx";
-import SearchBar from "./pages/SearchBar.jsx"
-import TechnicalSupport from "./pages/technicalSupport.js"
+import CustUser from "./pages/CustUser.js";
+import CustomizedUser from "./component/CustomizedUser.jsx";
+import PokeMarket from "./pages/PokeMarket.jsx";
+import Products from "./pages/Products.jsx";
+import SearchBar from "./pages/SearchBar.jsx";
+import TechnicalSupport from "./pages/technicalSupport.js";
 import Aboutus from "./pages/aboutUs.js";
 import FrequentQuestions from "./pages/frequentQuestions.js";
 import { HeaderMenu } from "./pages/headerMenu.js";
@@ -39,6 +43,10 @@ const Layout = () => {
                     <Routes>
                         <Route element={<LogIn />} path="/logIn" />
                         <Route element={<Signup />} path="/Signup" />
+                        <Route element={<CustUser/>} path="/CustUser" />
+                        <Route eleent={<CustomizedUser/>} path="/CustomizedUser" />
+                        <Route element={<PokeMarket />} path="/PokeMarket" />
+                        <Route element={<Products/>} path="/Products"/>
                         <Route element={<SearchBar />} path="/SearchBar" />
                         <Route element={<PokemonView />} path="/pokemonView" />
                         <Route element={<PokemonDetails />} path="/pokemon/:name" />
