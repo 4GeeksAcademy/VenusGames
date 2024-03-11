@@ -7,7 +7,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap'); */
 
 nav{
-    background-color: #6cba9a;
+    background-color: #5da889;
     display: flex;
     justify-content: space-between;
     text-decoration: none; 
@@ -91,4 +91,11 @@ a{
   .dos{
     margin: 0;
     padding: 0;
+  }
+  button.user-btn {
+    height: 60px;
+    background: none;
+  }
+  .logouser-drop{
+    display: flex;
   }

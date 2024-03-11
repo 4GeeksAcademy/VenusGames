@@ -1,0 +1,7 @@
+form {
+    display: grid;
+    justify-items: center;
+}
+h1 {
+    margin-bottom: 20px;
+}

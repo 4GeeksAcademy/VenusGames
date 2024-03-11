@@ -3,9 +3,9 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../../styles/cust.css";
-import avatars from "../../img/json/avatars.json";
+import avatars from "../../img/JSON/avatars.json";
 
-const CustomizeUser = () => {
+const CustomizedUser = () => {
     const { store, actions } = useContext(Context);
     const [formData, setFormData] = useState({
         full_name: "",
@@ -14,10 +14,12 @@ const CustomizeUser = () => {
 
     useEffect(() => {
         // Populate the form data with the current user information
-        setFormData({
-            full_name: store.currentUser.full_name || "",
-            avatar: store.currentUser.avatar || "",
-        });
+        if (store.currentUser) {
+            setFormData({
+                full_name: store.currentUser.full_name || "",
+                avatar: store.currentUser.avatar || "",
+            });
+        }
     }, [store.currentUser]);
 
     const handleChange = (e) => {
@@ -120,4 +122,4 @@ const CustomizeUser = () => {
     );
 };
 
-export default CustomizeUser;
+export default CustomizedUser;
