@@ -234,7 +234,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
+				//este comentario es para agregarle algo y poder hacer el push de nuevo
 
 			// AddFavorite para comunicar con el front pero sin detalles ya que en routes.py se hizo la solitud POST (?)
 			addFavorite: async (productId) => {
