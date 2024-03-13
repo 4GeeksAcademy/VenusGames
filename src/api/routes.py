@@ -2,8 +2,8 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import request, jsonify, url_for, Blueprint
-from api.models import db, User
+from flask import request, jsonify, url_for, Blueprint, current_app
+from api.models import db, User, Product, Order, Favorites
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 import json
@@ -136,6 +136,63 @@ def get_all_products():
         return jsonify(serialized_products), 200
     else:
         return jsonify({"msg": "No se encontraron productos"}), 404
+
+
+#Se crea favoritos trayendo primero los ya guardados    
+@api.route('/user/favorites', methods=['GET'])
+@jwt_required()
+def get_all_favorites():
+    user_id = get_jwt_identity()
+    favorites = Favorites.query.filter_by(user_id=user_id).all()
+    if not favorites:
+        return jsonify({"msg": "No se encontraron favoritos"}), 404
+    serialized_favorites = [favorite.serialize() for favorite in favorites]
+    return jsonify(serialized_favorites), 200
+
+
+#se la da opcion para agregar favoritos
+@api.route('/user/favorites', methods=['POST'])
+@jwt_required()
+def add_favorites():
+    user_id = get_jwt_identity()
+    body = request.json 
+
+    if not body.get("product_id"):
+        return jsonify({"error": "Se requiere 'product_id' para agregar a favoritos"}), 400
+    
+    # Verificar si el producto ya está en favoritos
+    existing_favorite = Favorites.query.filter_by(product_id=body.get("product_id"), user_id=user_id).first()
+    if existing_favorite:
+        return jsonify({"error": "El producto ya está en favoritos"}), 400
+    
+    # Crear el nuevo favorito
+    new_favorite = Favorites(
+        user_id=user_id,
+        product_id=body.get("product_id"),
+        name=body.get("name"),
+        description=body.get("description"),
+        price=body.get("price")
+    )
+    db.session.add(new_favorite)
+    db.session.commit()
+    return jsonify({"msg": "Producto agregado a favoritos exitosamente", "added_favorite": new_favorite.serialize()}), 200
+
+
+#Si el usuario ya no quiere tener el producto en el listado, se da la opcion de borrarlo
+@api.route('/user/favorites/<int:favorite_id>', methods=['DELETE'])
+@jwt_required()
+def delete_favorite(favorite_id):
+    user_id = get_jwt_identity()
+    
+    favorite = Favorites.query.filter_by(id=favorite_id, user_id=user_id).first()
+    
+    if not favorite:
+        return jsonify({"error": "Favorito no encontrado"}), 404
+
+    db.session.delete(favorite)
+    db.session.commit()
+    return jsonify({"msg": "Favorito eliminado exitosamente"}), 200
+
     
 #Crear ordenes de los products = 'POST'
 @api.route('/orders', methods=['POST'])

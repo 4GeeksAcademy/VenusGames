@@ -233,6 +233,84 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error editing user:', error);
 				}
 			},
+
+				//este comentario es para agregarle algo y poder hacer el push de nuevo
+
+			// AddFavorite para comunicar con el front pero sin detalles ya que en routes.py se hizo la solitud POST (?)
+			addFavorite: async (productId) => {
+				try {
+					const token = localStorage.getItem("token");
+					const response = await fetch(apiUrl + '/user/favorites', {
+						method: "POST",
+						body: JSON.stringify({ product_id: productId }),
+						headers: {
+							'Content-type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						}
+					});
+					if (response.ok) {
+						// Actualizar la lista de favoritos después de agregar uno nuevo
+						actions.getFavorites();
+					} else {
+						console.error("Failed to add favorite");
+					}
+				} catch (error) {
+					console.error("Error adding favorite:", error);
+				}
+			},
+
+			// getFavorites para mostrar los ya guardados en el front pero la solicitud ya fue hecha en routes.py (?)
+			getFavorites: async () => {
+				try {
+					const token = localStorage.getItem("token");
+					const response = await fetch(apiUrl + '/user/favorites', {
+						method: "GET",
+						headers: {
+							'Content-type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						}
+					});
+					if (response.ok) {
+						const data = await response.json();
+						// Actualizar el estado de fav con los favoritos obtenidos
+						setStore({ ...store, favorites: data });
+					} else {
+						console.error("Failed to get favorites");
+					}
+				} catch (error) {
+					console.error("Error getting favorites:", error);
+				}
+			},
+
+
+			//metodo para borrar favorito por favorito
+			updateFavorites: async (itemToRemove) => {
+				try {
+					const token = localStorage.getItem("token");
+					console.log("Item received to remove:", itemToRemove);
+
+					const response = await fetch(apiUrl + "/user/favorite", {
+						method: "DELETE",
+						body: JSON.stringify(itemToRemove),
+						headers: {
+							'Content-type': 'application/json; charset=UTF-8',
+							"Authorization": `Bearer ${token}`,
+						}
+					});
+
+					if (!response.ok) {
+						throw new Error("Unable to delete");
+					}
+
+					const store = getStore();
+					const updatedFavorites = store.favorites.filter(favorite => favorite.id !== itemToRemove.id);
+					setStore({ favorites: updatedFavorites });
+				} catch (error) {
+					console.error(error);
+				}
+			},
+
+
 		}
 
 	};

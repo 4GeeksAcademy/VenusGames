@@ -27,6 +27,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     price = db.Column(db.Float, nullable=False)
+    description = db.Column(db.String(250), nullable=True)
     # image_url = db.Column(db.String(500), nullable=False) (1.2)
     creator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
@@ -68,6 +69,26 @@ class Order(db.Model):
             "total_price": self.total_price,
             
         }
+class Favorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    # url_img = db.Column(db.String(500), unique=True, nullable=True)
+    name = db.Column(db.String(120), nullable=False)
+    description = db.Column(db.String(250), nullable=True)
+    price = db.Column(db.Float, nullable=False)
 
+    def __repr__(self):
+        return '<Favorites %r>' % self.id
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id, 
+            "product_id": self.product_id,
+            "name": self.name,
+            "description": self.description,  
+            "price": self.price,       
+        }
 
     
