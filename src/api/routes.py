@@ -15,7 +15,7 @@ api = Blueprint('api', __name__)
 bcrypt = Bcrypt()
 jwt = JWTManager()
 
-CORS(api)
+CORS(api, origins= "https://expert-couscous-vxp6v47xgj93pgwj-3000.app.github.dev")
 
 @api.route('/sign_up', methods=['POST'])
 def create_one_user():
