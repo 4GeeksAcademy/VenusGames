@@ -24,6 +24,7 @@ import Aboutus from "./pages/aboutUs.js";
 import FrequentQuestions from "./pages/frequentQuestions.js";
 import { HeaderMenu } from "./pages/headerMenu.js";
 import FilterBar from "./pages/FilterBar.jsx";
+import NewProductForm from "./component/NewProductForm.js";
 
 
 
@@ -47,6 +48,7 @@ const Layout = () => {
                         <Route eleent={<CustomizedUser/>} path="/CustomizedUser" />
                         <Route element={<PokeMarket />} path="/PokeMarket" />
                         <Route element={<Products/>} path="/Products"/>
+                        <Route element={<NewProductForm/>} path="/NewProductForm"/>
                         <Route element={<SearchBar />} path="/SearchBar" />
                         <Route element={<PokemonView />} path="/pokemonView" />
                         <Route element={<PokemonDetails />} path="/pokemon/:name" />

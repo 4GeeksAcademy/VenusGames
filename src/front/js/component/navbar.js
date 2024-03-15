@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Context } from '../store/appContext.js';
 import pokeballiconVenus from "../../img/pokeballicon03venus.png";
 import defaultAvatar from "../../img/defaultAvatar.png";
-import "../../styles/navbar.css";
-import SearchBar from "../pages/SearchBar.jsx";
+import NewProductForm from './NewProductForm';
 import Logout from './Logout.jsx';
+import "../../styles/navbar.css";
+
 
 
 export const Navbar = () => {
@@ -26,14 +27,14 @@ export const Navbar = () => {
 		navigate("/CustUser", { state: { currentUser: currentUser } });
 	}
 
-	const handleSearch = (searchTerm) => {
-		// Lógica para manejar la búsqueda
-		console.log("Search term:", searchTerm)
-		const filteredPokemons = getStore().pokemon.filter((pokemon) =>
-			pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-		);
-		console.log("Filtered Pokemons:", filteredPokemons);
-	};
+	// const handleSearch = (searchTerm) => {
+	// 	// Lógica para manejar la búsqueda
+	// 	console.log("Search term:", searchTerm)
+	// 	const filteredPokemons = getStore().pokemon.filter((pokemon) =>
+	// 		pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+	// 	);
+	// 	console.log("Filtered Pokemons:", filteredPokemons);
+	// };
 
 	return (
 		<nav className="navbar navbar-dark d-flex justify-content-space-between mainHeader">
@@ -42,7 +43,7 @@ export const Navbar = () => {
 
 				<div className='logouser-drop'>
 					<div className='me-4'>
-						<h5>Welcome {store.currentUser.full_name}</h5>
+						<h5>Welcome <b>{store.currentUser.full_name}</b></h5>
 					</div>
 					<div className='cont-btns'>
 						<div className="dropdown">
@@ -55,7 +56,7 @@ export const Navbar = () => {
 							</button>
 							<ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} onBlur={closeDropdown}>
 								<li><Link to={"/CustUser"}>Edit User</Link></li>
-								<li><Link to="/demo">---</Link></li>
+								<li><Link to={"/NewProductForm"}> Add new product </Link></li>
 								{store.currentUser.admin && (
 									<li><Link to="/listUsers">All Users</Link></li>
 								)}
@@ -102,6 +103,8 @@ export const Navbar = () => {
 					</Link>
 				</div>
 			</div>
+
+			
 		</nav>
 	);
 };
