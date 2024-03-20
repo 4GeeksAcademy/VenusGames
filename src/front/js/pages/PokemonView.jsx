@@ -9,7 +9,7 @@ const PokemonView = () => {
   // const [filteredPokemons, setFilteredPokemons] = useState([]);
 
   useEffect(() => {
-    actions.getPokemonsList('https://pokeapi.co/api/v2/pokemon/?limit=50'); //no esta funcionando el 50
+    actions.getPokemonsList('https://pokeapi.co/api/v2/pokemon/?limit=50'); 
   }, []);
 
 // Este efecto se ejecutará cada vez que cambie la región seleccionada

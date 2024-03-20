@@ -22,6 +22,8 @@ class User(db.Model):
             "admin": self.admin,
             # do not serialize the password, its a security breach
         }
+    
+    
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)

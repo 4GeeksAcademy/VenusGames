@@ -85,6 +85,29 @@ def users():
         return jsonify(serialized_users), 200
     else:
         return jsonify({"msg": "No users found"}), 404
+    
+@api.route('/user', methods=['PUT'])
+@jwt_required()
+def edit_user():
+    try:
+        data = request.get_json()
+        user_id = get_jwt_identity()
+
+        # Obtener el usuario actual desde la base de datos
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({"error": "Usuario no encontrado."}), 404
+
+        user.full_name = data.get("full_name", user.full_name)
+        user.avatar = data.get("avatar", user.avatar)
+
+        # Guardar los cambios en la base de datos
+        db.session.commit()
+
+        return jsonify({"message": "Usuario editado exitosamente", "user": user.serialize()}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @api.route('/isAuth', methods=['GET'])
 @jwt_required()
@@ -193,6 +216,7 @@ def delete_favorite(favorite_id):
     db.session.commit()
     return jsonify({"msg": "Favorito eliminado exitosamente"}), 200
 
+
     
 #Crear ordenes de los products = 'POST'
 @api.route('/orders', methods=['POST'])
@@ -277,8 +301,9 @@ def edit_product(product_id):
         product.name = data.get("name", product.name)
         product.description = data.get("description", product.description)
         product.price = data.get("price", product.price)
+ 
+        db.session.commit() 
 
-        db.session.commit()
 
         return jsonify({"message": "Producto editado exitosamente", "product": product.serialize()}), 200
 

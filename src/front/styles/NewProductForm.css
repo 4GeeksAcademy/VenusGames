@@ -1,0 +1,9 @@
+.NewProductForm{
+    display: grid;
+    justify-content: center;
+    justify-items: stretch;
+    margin: 50px;
+}
+.formParts{
+    
+}
