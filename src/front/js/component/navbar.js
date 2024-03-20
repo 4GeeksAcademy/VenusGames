@@ -14,6 +14,12 @@ export const Navbar = () => {
 	const { store } = useContext(Context);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const navigate = useNavigate();
+	const [products, setProducts] = useState([]);
+
+    const onCreateProduct = async (newProductData) => {
+        console.log("Nuevo producto:", newProductData);
+        setProducts([...products, newProductData]);
+    };
 
 	const toggleDropdown = () => {
 		setIsDropdownOpen(!isDropdownOpen);
@@ -56,7 +62,9 @@ export const Navbar = () => {
 							</button>
 							<ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} onBlur={closeDropdown}>
 								<li><Link to={"/CustUser"}>Edit User</Link></li>
-								<li><Link to={"/NewProductForm"}> Add new product </Link></li>
+								<li>
+									<Link to={"/NewProductPage"}> Add new product </Link>
+								</li>
 								{store.currentUser.admin && (
 									<li><Link to="/listUsers">All Users</Link></li>
 								)}
@@ -97,9 +105,9 @@ export const Navbar = () => {
 			</div>
 
 			<div className="ml-auto">
-				<div className="secondButton">
+				<div className="secondButtonA">
 					<Link to="/PokeMarket" style={{ textDecoration: "none" }}>
-						<button className='primary'>PokeMarket</button>
+						<button className='secondButtonB'>PokeMarket</button>
 					</Link>
 				</div>
 			</div>

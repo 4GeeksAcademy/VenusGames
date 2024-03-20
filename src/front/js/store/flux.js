@@ -61,9 +61,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: async () => {
 				try {
-					const actions = getActions()
+					const actions = getActions();
+			
 					setStore({ loggedUserId: null, favorites: [] });
-					actions.isAuth()
+					actions.isAuth();
 					return true;
 				} catch (error) {
 					console.error('Error during logout:', error);
@@ -262,9 +263,10 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					});
 					if (response.ok) {
 						const data = await response.json();
+						const store = getStore();
+						// Agregar el nuevo producto al estado products
+						setStore({ ...store, products: [...store.products, data.product] });
 						console.log("Producto creado exitosamente:", data);
-						
-
 					} else {
 						console.error("Error al crear el producto:", response.statusText);
 					}
@@ -279,12 +281,12 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			addFavorite: async (productId) => {
 				try {
 					const token = localStorage.getItem("token");
-					const response = await fetch(apiUrl + '/user/favorites', {
+					const response = await fetch(`${apiUrl}/user/favorites`, {
 						method: "POST",
 						body: JSON.stringify({ product_id: productId }),
 						headers: {
 							'Content-type': 'application/json',
-							'Authorization': `Bearer ${token}`
+							'Authorization': 'Bearer ' + localStorage.getItem("token")
 						}
 					});
 					if (response.ok) {
@@ -297,15 +299,15 @@ export const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// getFavorites para mostrar los ya guardados en el front pero la solicitud ya fue hecha en routes.py (?)
+	
 			getFavorites: async () => {
 				try {
 					const token = localStorage.getItem("token");
-					const response = await fetch(apiUrl + '/user/favorites', {
+					const response = await fetch(`${apiUrl}/user/favorites`, {
 						method: "GET",
 						headers: {
 							'Content-type': 'application/json',
-							'Authorization': `Bearer ${token}`
+							'Authorization': 'Bearer ' + localStorage.getItem("token")
 						}
 					});
 					if (response.ok) {
@@ -327,12 +329,12 @@ export const getState = ({ getStore, getActions, setStore }) => {
 					const token = localStorage.getItem("token");
 					console.log("Item received to remove:", itemToRemove);
 
-					const response = await fetch(apiUrl + "/user/favorite", {
+					const response = await fetch(`${apiUrl}/user/favorites`, {
 						method: "DELETE",
 						body: JSON.stringify(itemToRemove),
 						headers: {
 							'Content-type': 'application/json; charset=UTF-8',
-							"Authorization": `Bearer ${token}`,
+							"Authorization": 'Bearer ' + localStorage.getItem("token"),
 						}
 					});
 

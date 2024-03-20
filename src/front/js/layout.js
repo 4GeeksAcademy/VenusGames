@@ -18,6 +18,7 @@ import CustUser from "./pages/CustUser.js";
 import CustomizedUser from "./component/CustomizedUser.jsx";
 import PokeMarket from "./pages/PokeMarket.jsx";
 import Products from "./pages/Products.jsx";
+import Favorites from "./pages/Favorites.jsx";
 import SearchBar from "./pages/SearchBar.jsx";
 import TechnicalSupport from "./pages/technicalSupport.js";
 import Aboutus from "./pages/aboutUs.js";
@@ -25,6 +26,7 @@ import FrequentQuestions from "./pages/frequentQuestions.js";
 import { HeaderMenu } from "./pages/headerMenu.js";
 import FilterBar from "./pages/FilterBar.jsx";
 import NewProductForm from "./component/NewProductForm.js";
+import NewProductPage from "./component/NewProductPage.js";
 
 
 
@@ -44,16 +46,18 @@ const Layout = () => {
                     <Routes>
                         <Route element={<LogIn />} path="/logIn" />
                         <Route element={<Signup />} path="/Signup" />
-                        <Route element={<CustUser/>} path="/CustUser" />
-                        <Route eleent={<CustomizedUser/>} path="/CustomizedUser" />
+                        <Route element={<CustUser />} path="/CustUser" />
+                        <Route eleent={<CustomizedUser />} path="/CustomizedUser" />
                         <Route element={<PokeMarket />} path="/PokeMarket" />
-                        <Route element={<Products/>} path="/Products"/>
-                        <Route element={<NewProductForm/>} path="/NewProductForm"/>
+                        <Route element={<Products />} path="/Products" />
+                        <Route element={<NewProductForm />} path="/NewProductForm" />
+                        <Route element={<NewProductPage/>} path="/NewProductPage"/>
+                        <Route element={<Favorites />} path="/Favorites" />
                         <Route element={<SearchBar />} path="/SearchBar" />
                         <Route element={<PokemonView />} path="/pokemonView" />
                         <Route element={<PokemonDetails />} path="/pokemon/:name" />
                         <Route element={<HeaderMenu />} path="/Headermenu" />
-                        <Route element={<FilterBar/>} path="/FilterBar" />
+                        <Route element={<FilterBar />} path="/FilterBar" />
                         <Route element={<Home />} path="/" />
                         <Route element={<Footer />} path="/footer" />
                         <Route element={<Demo />} path="/demo" />
