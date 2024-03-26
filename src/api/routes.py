@@ -3,19 +3,16 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import request, jsonify, url_for, Blueprint, current_app
-from api.models import db, User, Product, Order, Favorites
+from api.models import db, User, Product, Order, Favorites, TokenBlocked
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 import json
-from flask_jwt_extended import create_access_token, get_jwt_identity,jwt_required,JWTManager,get_raw_jwt, jwt_required
-from api.blacklist import blacklist
+from flask_jwt_extended import create_access_token, get_jwt_identity, get_jti, get_jwt, jwt_required,jwt_required
 from flask_bcrypt import Bcrypt
 from flask import current_app
 
 api = Blueprint('api', __name__)
 bcrypt = Bcrypt()
-jwt = JWTManager()
-blacklist = set()
 
 CORS(api, origins= "https://expert-couscous-vxp6v47xgj93pgwj-3000.app.github.dev")
 
@@ -79,23 +76,32 @@ def login():
 
         return jsonify({"error": f"Ocurrió un error al procesar la solicitud: {str(e)}"}), 500
     
+def verifyToken(jti):
+    search = TokenBlocked.query.filter_by(token=jti).first()
+    
+    if search == None:
+        return True #para este caso el token no estaría en la lista de bloqueados
+    else:
+        return False #para este caso el token sí estaría en la lista de bloqueados
+
 @api.route("/logout", methods=["POST"])
 @jwt_required()
 def logout():
     try:
-        # Obtenemos el JTI (JWT ID) del token actual
-        jti = get_raw_jwt()['jti']
-        
-        # Añadimos el JTI a la lista de tokens revocados
-        # Esto invalidará el token actual y cualquier otro token emitido con el mismo JTI
-        jwt.revoked_tokens.add(jti)
+        jti = get_jwt()["jti"]
+        identity = get_jwt_identity() #asociada al correo
+        print("jti: ", jti)
+        new_register =  TokenBlocked(token=jti, user_id=identity) #creamos una instancia de la clase TokenBlocked
 
-        return jsonify({"message": "Logout successful"}), 200
-    except Exception as e:
-        return jsonify({"message": "Error logging out", "error": str(e)}), 500
+        db.session.add(new_register)
+        db.session.commit()
 
-if __name__ == '__main__':
-    app.run()
+        return jsonify({"message":"logout succesfully"}), 200
+    
+    except Exception as error:
+        print(str(error))
+        return jsonify({"message":"error trying to logout"}), 403
+
 
 @api.route('/users', methods=['GET'])
 def users():

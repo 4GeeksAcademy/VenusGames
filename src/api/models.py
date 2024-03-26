@@ -1,3 +1,4 @@
+import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -23,7 +24,24 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
     
-    
+class TokenBlocked(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    token = db.Column(db.String(200), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.DateTime, nullable = False, default=datetime.datetime.utcnow)
+    user = db.relationship('User', backref='tokenblocked')
+
+    def __repr__(self):
+        return f'<User {self.email}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "token": self.token,
+            "user_id": self.user_id,
+            "date": self.date
+        }
+
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
