@@ -15,6 +15,7 @@ import Footer from "./component/footer";
 import Signup from "./component/SignUp.jsx";
 import LogIn from "./component/logIn.jsx";
 import CustUser from "./pages/CustUser.js";
+import listUser from "./component/listUsers.jsx";
 import CustomizedUser from "./component/CustomizedUser.jsx";
 import PokeMarket from "./pages/PokeMarket.jsx";
 import Products from "./pages/Products.jsx";
@@ -47,6 +48,7 @@ const Layout = () => {
                         <Route element={<LogIn />} path="/logIn" />
                         <Route element={<Signup />} path="/Signup" />
                         <Route element={<CustUser />} path="/CustUser" />
+                        <Route element={<listUser />} path="listUser"/>
                         <Route eleent={<CustomizedUser />} path="/CustomizedUser" />
                         <Route element={<PokeMarket />} path="/PokeMarket" />
                         <Route element={<Products />} path="/Products" />

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context, } from "../store/appContext.js";
 import { useNavigate, Link } from "react-router-dom";
 
-const ListUsers = () => {
+const listUsers = () => {
     const { store, actions } = useContext(Context)
 
     useEffect(() => {
@@ -30,4 +30,4 @@ const ListUsers = () => {
     );
 };
 
-export default ListUsers
+export default listUsers

@@ -278,7 +278,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 
 
 			// AddFavorite para comunicar con el front pero sin detalles ya que en routes.py se hizo la solitud POST (?)
-			addFavorite: async (productId) => {
+			addFavorites: async (productId) => {
 				try {
 					const token = localStorage.getItem("token");
 					const response = await fetch(`${apiUrl}/user/favorites`, {
@@ -324,7 +324,7 @@ export const getState = ({ getStore, getActions, setStore }) => {
 
 
 			//metodo para borrar favorito por favorito
-			updateFavorites: async (itemToRemove) => {
+			removeFavorite: async (itemToRemove) => {
 				try {
 					const token = localStorage.getItem("token");
 					console.log("Item received to remove:", itemToRemove);

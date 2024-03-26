@@ -56,7 +56,7 @@ const LogIn = () => {
                         title: "Login successful!",
                         showConfirmButton: false,
                         timer: 1500,
-                    }).then(() => navigate("/ListUsers"));
+                    }).then(() => navigate("/listUsers"));
                 } else {
                     Swal.fire({
                         position: "top-end",

@@ -104,13 +104,13 @@ export const Navbar = () => {
 				</Link>
 			</div>
 
-			<div className="ml-auto">
+			
 				<div className="secondButtonA">
 					<Link to="/PokeMarket" style={{ textDecoration: "none" }}>
-						<button className='secondButtonB'>PokeMarket</button>
+						<button className='secondButtonB' id='navbarButton'>PokeMarket</button>
 					</Link>
 				</div>
-			</div>
+			
 
 			
 		</nav>
