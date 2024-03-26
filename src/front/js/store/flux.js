@@ -62,10 +62,22 @@ export const getState = ({ getStore, getActions, setStore }) => {
 			logout: async () => {
 				try {
 					const actions = getActions();
-			
-					setStore({ loggedUserId: null, favorites: [] });
-					actions.isAuth();
-					return true;
+					let result = await fetch(`${apiUrl}/logout`, {
+						method: "POST",
+						headers: {
+							Authorization: 'Bearer ' + localStorage.getItem("token")
+						}
+					});
+
+					const data = await result.json();
+					console.log(data);
+					if (result.ok) {
+						localStorage.removeItem("token")
+						setStore({ loggedUserId: null, favorites: [] });
+						actions.isAuth();
+						return true;
+					}
+					return false
 				} catch (error) {
 					console.error('Error during logout:', error);
 					return false;
