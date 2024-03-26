@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import NewProductForm from "./NewProductForm";
+import { Context } from "../store/appContext.js";
 
 const NewProductPage = () => {
+    const { actions } = useContext(Context);
     const onCreateProduct = async (newProductData) => {
         console.log("Nuevo producto:", newProductData);
-        // Lógica para enviar los datos del nuevo producto al servidor
+        try {
+            await actions.addNewProdut(newProductData);
+        } catch (error) {
+            console.error("error al agregar nuevo producto", error);
+        }
     };
 
     return (

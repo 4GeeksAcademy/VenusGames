@@ -10,7 +10,7 @@ const FilterBar = () => {
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          style={{boxShadow: "none"}}
+          style={{ boxShadow: "none" }}
         >
           <i
             className="fa-solid fa-bars-staggered"
@@ -18,7 +18,7 @@ const FilterBar = () => {
           ></i>
         </button>
         <ul className="dropdown-menu">
-          <div className="filter__types" id="type-container">
+          <div className="filter__types" id="type-container" style={{color: "aliceblue"}}>
             <h2 className="filter__title">
               Type <i className="fa-solid fa-wand-magic-sparkles"></i>
             </h2>

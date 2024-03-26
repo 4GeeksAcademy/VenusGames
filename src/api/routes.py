@@ -7,13 +7,15 @@ from api.models import db, User, Product, Order, Favorites
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 import json
-from flask_jwt_extended import create_access_token, get_jwt_identity,jwt_required,JWTManager
+from flask_jwt_extended import create_access_token, get_jwt_identity,jwt_required,JWTManager,get_raw_jwt, jwt_required
+from api.blacklist import blacklist
 from flask_bcrypt import Bcrypt
 from flask import current_app
 
 api = Blueprint('api', __name__)
 bcrypt = Bcrypt()
 jwt = JWTManager()
+blacklist = set()
 
 CORS(api, origins= "https://expert-couscous-vxp6v47xgj93pgwj-3000.app.github.dev")
 
@@ -76,6 +78,24 @@ def login():
         print(f"Error en la ruta /login: {str(e)}")
 
         return jsonify({"error": f"Ocurrió un error al procesar la solicitud: {str(e)}"}), 500
+    
+@api.route("/logout", methods=["POST"])
+@jwt_required()
+def logout():
+    try:
+        # Obtenemos el JTI (JWT ID) del token actual
+        jti = get_raw_jwt()['jti']
+        
+        # Añadimos el JTI a la lista de tokens revocados
+        # Esto invalidará el token actual y cualquier otro token emitido con el mismo JTI
+        jwt.revoked_tokens.add(jti)
+
+        return jsonify({"message": "Logout successful"}), 200
+    except Exception as e:
+        return jsonify({"message": "Error logging out", "error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run()
 
 @api.route('/users', methods=['GET'])
 def users():
