@@ -66,7 +66,9 @@ export const Navbar = () => {
 									<Link to={"/NewProductPage"}> Add new product </Link>
 								</li>
 								{store.currentUser.admin && (
-									<li><Link to="/listUsers">All Users</Link></li>
+									<li>
+										<Link to={"/listUsers"}>All Users</Link>
+									</li>
 								)}
 								<hr />
 								<li>
